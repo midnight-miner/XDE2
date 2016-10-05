@@ -1,2 +1,2 @@
-# XDE2
-XDE2
+# XDE2Coin
+XDE2 Wallet
