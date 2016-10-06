@@ -36,22 +36,20 @@ windows:LIBS += -lshlwapi
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lboost_system-mgw49-mt-s-1_55 -lboost_filesystem-mgw49-mt-s-1_55 -lboost_program_options-mgw49-mt-s-1_55 -lboost_thread-mgw49-mt-s-1_55
-BOOST_LIB_SUFFIX=-mgw49-mt-s-1_55
-BOOST_INCLUDE_PATH=C:/deps/boost_1_55_0
-BOOST_LIB_PATH=C:/deps/boost_1_55_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1j/include
-OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1j
-MINIUPNPC_INCLUDE_PATH=C:/deps/
-MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-LIBPNG_INCLUDE_PATH=d:/deps/libpng-1.6.12
-LIBPNG_LIB_PATH=d:/deps/libpng-1.6.12/.libs
-QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
-QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
-GMP_INCLUDE_PATH= C:/depsgmp-6.0.0
-GMP_LIB_PATH= C:/deps/gmp-6.0.0/.libs
+LIBS += -lboost_system-mgw49-mt-s-1_57 -lboost_filesystem-mgw49-mt-s-1_57 -lboost_program_options-mgw49-mt-s-1_57 -lboost_thread-mgw49-mt-s-1_57
+
+
+    BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57
+    BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
+    BOOST_LIB_PATH=C:/deps/boost_1_57_0/stage/lib
+    BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
+    BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
+    OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1l/include
+    OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1l
+    MINIUPNPC_INCLUDE_PATH=C:/deps/
+    MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+    QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
+    QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 }
 
 # for boost 1.37, add -mt to the boost libraries
@@ -110,7 +108,7 @@ contains(USE_UPNP, -) {
     count(USE_UPNP, 0) {
         USE_UPNP=1
     }
-    DEFINES += USE_UPNP=$$USE_UPNP STATICLIB
+    DEFINES += DMINIUPNP_STATICLIB
     INCLUDEPATH += $$MINIUPNPC_INCLUDE_PATH
     LIBS += $$join(MINIUPNPC_LIB_PATH,,-L,) -lminiupnpc
     win32:LIBS += -liphlpapi

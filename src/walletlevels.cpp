@@ -109,6 +109,9 @@ WalletLevel WalletLevels::GetWalletLevel2(CTxDestination address)
 // 39orebla: GetStakeInterest does need to know block height due to the PoS reward change
 int64_t WalletLevels::GetStakeInterest(CTxDestination address, int height)
 {
+    if (height >= FORK_HEIGHT_6)
+        return GetStakeInterestV5(address, height);
+
 	if (height >= FORK_HEIGHT_5)
 		return GetStakeInterestV4(address, height);
 	
@@ -187,4 +190,24 @@ int64_t WalletLevels::GetStakeInterestV4(CTxDestination address, int height)
             return 10 * COIN; // Standard 100% annual interest
 		
 	}
+}
+
+
+int64_t WalletLevels::GetStakeInterestV5(CTxDestination address, int height)
+{
+    WalletLevel walletLevel = GetWalletLevel2(address);
+
+    switch(walletLevel)
+    {
+
+        case Platinum:
+            return 12 * COIN; 	// Platinum 120% annual interest
+        case Gold:
+            return 9 * COIN; // Gold 90% annual interest
+        case Silver:
+            return 6 * COIN; // Silver 60% annual interest
+        default:
+            return 2 * COIN; // Standard 20% annual interest
+
+    }
 }

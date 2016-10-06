@@ -46,6 +46,7 @@ static const int FORK_HEIGHT_2 = 37224; // 39orebla: PoS reward change
 static const int FORK_HEIGHT_3 = 65000; // keesdewit PoS reward change
 static const int FORK_HEIGHT_4 = 84000; 
 static const int FORK_HEIGHT_5 = 84030; 
+static const int FORK_HEIGHT_6 = 160000; // Griffith: PoS reward change
 static const int DISCONNECT_OLD_CLIENTS_HEIGHT = 40000; //keesdewit: Disconnecting old clients
 static const int64_t MAX_MINT_PROOF_OF_STAKE_PARTICIPATION = 350; // 35% per year
 
